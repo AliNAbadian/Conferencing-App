@@ -44,21 +44,23 @@ const MobileNav = () => {
                     pathname === link.route || pathname.startsWith(link.route);
 
                   return (
-                    <Link
-                      href={link.route}
-                      key={i}
-                      className={`flex gap-4 items-center rounded-lg w-full max-w-60 py-5 px-5 ${
-                        isActive ? "bg-blue-1" : ""
-                      }`}
-                    >
-                      <Image
-                        src={link.imgUrl}
-                        alt={link.label}
-                        width={20}
-                        height={20}
-                      />
-                      <p className="font-semibold">{link.label}</p>
-                    </Link>
+                    <SheetClose asChild key={link.route}>
+                      <Link
+                        href={link.route}
+                        key={i}
+                        className={`flex gap-4 items-center rounded-lg w-full max-w-60 py-5 px-5 ${
+                          isActive ? "bg-blue-1" : ""
+                        }`}
+                      >
+                        <Image
+                          src={link.imgUrl}
+                          alt={link.label}
+                          width={20}
+                          height={20}
+                        />
+                        <p className="font-semibold">{link.label}</p>
+                      </Link>
+                    </SheetClose>
                   );
                 })}
               </section>
