@@ -2,6 +2,7 @@
 
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -19,14 +20,19 @@ const Sidebar = () => {
             <Link
               href={link.route}
               key={i}
-              className={cn(
-                "flex gap-4 items-center rounded-lg justify-start",
-                {
-                  "bg-blue-1": isActive,
-                }
-              )}
+              className={`flex gap-4 items-center rounded-lg justify-start py-5 px-5 ${
+                isActive ? "bg-blue-1" : ""
+              }`}
             >
-              {link.label}
+              <Image
+                src={link.imgUrl}
+                alt={link.label}
+                width={24}
+                height={24}
+              />
+              <p className="text-lg font-semibold max-lg:hidden">
+                {link.label}
+              </p>
             </Link>
           );
         })}
